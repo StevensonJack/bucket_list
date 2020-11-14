@@ -10,10 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_11_194228) do
+ActiveRecord::Schema.define(version: 2020_11_12_190509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "title"
+    t.integer "budget"
+    t.string "location"
+    t.integer "time_frame"
+    t.integer "people_number"
+    t.string "category"
+    t.bigint "bucket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bucket_id"], name: "index_activities_on_bucket_id"
+  end
+
+  create_table "buckets", force: :cascade do |t|
+    t.string "title"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_buckets_on_user_id"
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.float "rating"
+    t.float "price"
+    t.date "start_date"
+    t.date "end_date"
+    t.bigint "activity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["activity_id"], name: "index_offers_on_activity_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +55,14 @@ ActiveRecord::Schema.define(version: 2020_11_11_194228) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "location"
+    t.date "birthday"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "activities", "buckets"
+  add_foreign_key "buckets", "users"
+  add_foreign_key "offers", "activities"
 end
