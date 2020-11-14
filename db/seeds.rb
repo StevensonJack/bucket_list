@@ -89,7 +89,7 @@ users.each do |user|
         time_frame: rand(3..20),
         people_number: rand(1..5),
         category: "flights",
-        bucket_id: bucket
+        bucket: bucket
       )
       activity.save!
     end
