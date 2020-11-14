@@ -16,12 +16,13 @@ require 'json'
 
 class Skyscanner
   def initialize(country, currency, originplace, destinationplace, outboundpartialdate, inboundpartialdate)
-    @country = country.to_s
     @currency = currency.to_s
-    @originplace = originplace.to_s
-    @destinationplace = destinationplace.to_s
     @outboundpartialdate = outboundpartialdate.to_s
     @inboundpartialdate = inboundpartialdate.to_s
+
+    @country = country.to_s
+    @originplace = get_place_id(originplace).to_s
+    @destinationplace = get_place_id(destinationplace).to_s
   end
 
   def search_flights
@@ -35,27 +36,43 @@ class Skyscanner
       "?inboundpartialdate=#{@inboundpartialdate}"\
     )
 
-    http = Net::HTTP.new(url.host, url.port)
-    http.use_ssl = true
-    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    response = http(url).request(request(url))
+    JSON.parse(response.read_body)
+  end
 
-    request = Net::HTTP::Get.new(url)
-    # request["x-rapidapi-key"] = '32f39adbe2msh15758a51bf6f752p1f5e10jsndba510cf39fc'
-    request["x-rapidapi-key"] = ENV["X_RAPIDAPI_KEY"].to_s
-    request["x-rapidapi-host"] = 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
-    # initialize the class with the api key
+  def get_place_id(location)
+    url = URI("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/USD/en-GB/?query=#{location}")
 
-    response = http.request(request)
-    parsed_response = JSON.parse(response.read_body)
+    response = http(url).request(request(url))
+    places = JSON.parse(response.read_body)["Places"]
+    places[0]['PlaceId']
+  end
+
+  def get_country_code(country)
+    url = URI("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/reference/v1.0/countries/en-US")
+
+    response = http(url).request(request(url))
+    countries = JSON.parse(response.read_body)["Countries"]
+
+    country_code = countries.select {|code| code["Name"] == country}
+    country_code.first["Code"]
   end
 
   private
 
-  def method_name
-
+  def http(url)
+    http = Net::HTTP.new(url.host, url.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    http
   end
 
-  def create_session(origin, destination, user_country_code, outbound_date)
+  def request(url)
+    request = Net::HTTP::Get.new(url)
+    request["x-rapidapi-key"] = '32f39adbe2msh15758a51bf6f752p1f5e10jsndba510cf39fc'
+    # request["x-rapidapi-key"] = ENV["X_RAPIDAPI_KEY"].to_s
+    request["x-rapidapi-host"] = 'skyscanner-skyscanner-flight-search-v1.p.rapidapi.com'
+    request
   end
 
 end
