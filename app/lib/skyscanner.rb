@@ -40,6 +40,8 @@ class Skyscanner
     JSON.parse(response.read_body)
   end
 
+  private
+
   def get_place_id(location)
     url = URI("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/autosuggest/v1.0/UK/USD/en-GB/?query=#{location}")
 
@@ -57,8 +59,6 @@ class Skyscanner
     country_code = countries.select {|code| code["Name"] == country}
     country_code.first["Code"]
   end
-
-  private
 
   def http(url)
     http = Net::HTTP.new(url.host, url.port)
