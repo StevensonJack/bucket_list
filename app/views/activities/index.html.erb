@@ -1,0 +1,27 @@
+<div class="container"> 
+  <h1>
+    <%= @bucket.title %>
+    <%= link_to edit_bucket_path(@bucket) do %>
+      <button><i class="fas fa-edit"></i> Edit</button>
+    <% end %>
+  </h1>
+  <%= link_to bucket_path(@bucket),  method: :delete, data: { confirm: "Are you sure" } do %>
+    <i class="fas fa-trash-alt"></i> Delete bucket
+  <% end %>
+  <div>
+    <%= link_to new_bucket_activity_path do %>
+      <button class="btn btn-primary">New activity</button>
+    <% end %>
+    <%= link_to buckets_path do %>
+      <button><i class="fas fa-undo-alt"></i> Back</button>
+    <% end %>
+  </div>
+
+  <% @bucket.activities.each do |activity| %>
+    <%= link_to bucket_activity_path(@bucket, activity) do %>
+      <div class="activity-card">
+        <%= activity.title %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

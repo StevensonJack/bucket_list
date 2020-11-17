@@ -1,0 +1,9 @@
+<%= simple_form_for [@bucket, @activity] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :budget %>
+  <%= f.input :location %>
+  <%= f.input :time_frame %>
+  <%= f.input :people_number %>
+  <%= f.input :category %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
