@@ -1,0 +1,20 @@
+<div class="container">
+  <%= link_to edit_bucket_activity_path do %>
+    <button><i class="fas fa-edit"></i> Edit</button>
+  <% end %>
+  <%= link_to bucket_activity_path(@bucket), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fas fa-trash-alt"></i> Delete
+  <% end %>
+
+  <p><strong>Title:</strong> <%= @activity.title %></p>
+  <p><strong>Budget:</strong> <%= @activity.budget %></p>
+  <p><strong>Location:</strong> <%= @activity.location %></p>
+  <p><strong>Time frame:</strong> <%= @activity.time_frame %></p>
+  <p><strong>People number:</strong> <%= @activity.people_number %></p>
+  <p><strong>Category:</strong> <%= @activity.category %></p>
+
+
+  <%= link_to bucket_activities_path do %>
+    <button><i class="fas fa-undo-alt"></i> Back</button>
+  <% end %>
+</div>

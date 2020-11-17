@@ -3,29 +3,44 @@ class BucketsController < ApplicationController
 
   def index
     @buckets = Bucket.all
-  end
-  
-  def new
     @bucket = Bucket.new
   end
-  
+
   def create
-    @bucket = Bucket.new(find_bucket)
+    @buckets = Bucket.all
+    @bucket = Bucket.new(bucket_params)
+    @bucket.user = current_user
     if @bucket.save
       flash[:success] = "Bucket successfully created"
-      redirect_to @bucket
+      redirect_to bucket_activities_path(@bucket)
     else
       flash[:error] = "Something went wrong"
-      render 'new'
+      render 'index'
     end
   end
 
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @bucket.update(bucket_params)
+      flash[:success] = "Activity was successfully updated"
+      redirect_to @bucket
+    else
+      flash[:success] = "Something went wrong"
+      render 'index'
+    end
+  end
+
   def destroy
     if @bucket.destroy
-      redirect_to buckets_path, notice: "Bucket was succesfully del"
+      redirect_to buckets_path, notice: "Bucket was succesfully deleted"
+    else
+      redirect_to buckets_path, notice: "Ups, we can't delete the bucket"
+    end
   end
   
   private
@@ -35,6 +50,6 @@ class BucketsController < ApplicationController
   end
 
   def bucket_params
-    paramas.require(:bucket).permit(:title)
+    params.require(:bucket).permit(:title)
   end
 end

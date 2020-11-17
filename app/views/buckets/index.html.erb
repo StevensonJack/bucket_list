@@ -1,0 +1,24 @@
+<div class="container">
+  <% if @buckets.empty? %>
+    <p> Start creating your firts bucket</p>
+    <div>
+      <%= render 'form' %>
+    </div>
+  <% else %>
+  <%# TODO: With JS hide and show BUCKET form %>
+    <div>
+      <%= render 'form' %>
+    </div>
+    <div>
+      <% @buckets.each do |bucket| %>
+        <% if bucket.user == current_user %>
+          <%= link_to bucket_activities_path(bucket) do %>
+            <div class="bucket-card">
+              <%= bucket.title %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
