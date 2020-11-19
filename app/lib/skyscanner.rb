@@ -1,26 +1,10 @@
-require 'uri'
-require 'net/http'
-require 'openssl'
-require 'json'
-
-# # This is a json string you want to convert this is to a ruby object
-# # Make a method that will do this
-# # create a ruby class that handles all the skyscanner stuff
-# # include skyscanner.rb later in the project
-# # use it like a controller
-# # Skyscanner class just returns a hash - which is parsed into another class which converts it into ruby model.
-# # Rails tasks - lectures
-# # looks through all activities then does the search on skyscanner
-# # create skyscanner class - interface it exposes (public methods available) -
-
-
 class Skyscanner
   def initialize(country, currency, originplace, destinationplace, outboundpartialdate, inboundpartialdate)
     @currency = currency.to_s
     @outboundpartialdate = outboundpartialdate.to_s
     @inboundpartialdate = inboundpartialdate.to_s
 
-    @country = country.to_s
+    @country = get_country_code(country).to_s
     @originplace = get_place_id(originplace).to_s
     @destinationplace = get_place_id(destinationplace).to_s
   end
@@ -37,7 +21,8 @@ class Skyscanner
     )
 
     response = http(url).request(request(url))
-    JSON.parse(response.read_body)
+    # JSON.parse(response.read_body)
+    gather_quote_data(JSON.parse(response.read_body))
   end
 
   private
@@ -68,6 +53,7 @@ class Skyscanner
   end
 
   def request(url)
+    # Setting the headers
     request = Net::HTTP::Get.new(url)
     request["x-rapidapi-key"] = '32f39adbe2msh15758a51bf6f752p1f5e10jsndba510cf39fc'
     # request["x-rapidapi-key"] = ENV["X_RAPIDAPI_KEY"].to_s
@@ -75,4 +61,13 @@ class Skyscanner
     request
   end
 
+  def gather_quote_data(results)
+    results["Quotes"].each do |quote|
+      quote[:OutboundCarrier] = results["Carriers"].select { |x| x["CarrierId"] == quote["OutboundLeg"]["CarrierIds"][0]}
+      quote[:OriginPlace] = results["Places"].select { |x| x["PlaceId"] == quote["OutboundLeg"]["OriginId"]}
+      quote[:DestinationPlace] = results["Places"].select { |x| x["PlaceId"] == quote["OutboundLeg"]["DestinationId"]}
+    end
+
+    results["Quotes"]
+  end
 end

@@ -1,21 +1,33 @@
+require 'uri'
+require 'net/http'
+require 'openssl'
+# require 'json'
+require 'byebug'
+require 'unirest'
 require_relative 'skyscanner.rb'
 
-country = "US"
-currency = "USD"
-originplace = "San Francisco"
-destinationplace = "New York JFK"
-outboundpartialdate = "2020-11-20"
-inboundpartialdate = "2020-11-27"
+
+country = "United Kingdom"
+currency = "GBP"
+originplace = "London"
+destinationplace = "Paris"
+outboundpartialdate = "2020-11-22"
+inboundpartialdate = "2020-11-23"
 
 results = Skyscanner.new(country, currency, originplace, destinationplace, outboundpartialdate, inboundpartialdate).search_flights
 
-# results = Skyscanner.new(country, currency, originplace, destinationplace, outboundpartialdate, inboundpartialdate).get_place_id("New York JFK")
+# puts results
 
-# results = Skyscanner.new(country, currency, originplace, destinationplace, outboundpartialdate, inboundpartialdate).get_country_code("United States")
+results.each do |x|
+  puts x
+end
 
-puts results
+# get_carrier_by_id method that can get the full object
 
-# puts results["Quotes"][0]
-# puts results["Carriers"]
+# fetch all the quotes and then from there exchange the info to get the strings rather than id
+
+# quote_data_gather method
+
+# within outbound_carrier: { put the carrier hash}
 
 # rails runner app/lib/skyscanner_test.rb
