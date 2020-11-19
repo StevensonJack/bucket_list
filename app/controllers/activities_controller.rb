@@ -3,6 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :find_bucket, only: [:show, :edit, :update, :index, :new, :create]
 
   def index
+    @activities = @bucket.activities.order(budget: :asc)
   end
   
   def new
@@ -46,7 +47,6 @@ class ActivitiesController < ApplicationController
       redirect_to bucket_activities_path
     end
   end
-  
 
 
   private

@@ -1,4 +1,6 @@
-<%= simple_form_for @bucket do |f| %>
-  <%= f.input :title %>
-   <%= f.button :submit, class: "btn btn-primary" %>
-<% end %>
+    <%# --- Bucket form --- %>
+    <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+      <%= f.text_field :title %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  
