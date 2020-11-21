@@ -1,8 +1,50 @@
 <div class="container">
-  <h1>Pages#home</h1>
-  <p>Find me in app/views/pages/home.html.erb</p>
-
-  <%= link_to buckets_path do %>
-    <button class="btn btn-primary"> Let's start</button>
-  <% end %>
+  <div class="banner">
+    <div class="row">
+      <div class="col-md-6 column-text">
+        <%= link_to "Start Here!", buckets_path, class: "blue-button large-button space-between" %>
+        <h1>Don't waste time chasing your dreams. Just use it to do them.</h1>
+        <p>- The Bucket List Team</p>
+        <img src="/assets/Logo_list.png" class="logo_list">
+      </div>
+      <div class="col-md-5 column-images">
+        <div>
+          <div class="card-image">
+            <div class="show-info">From the confort of your home create your Bucket List!</div>
+            <img src="/assets/sofa.png" class="image">
+          </div>
+          <div class="card-image">
+            <div class="show-info">Find the hottest deals on the activities you added to your Bucket List!</div>
+            <img src="/assets/hot-deals.png" class="image">
+          </div>
+        </div>
+        <div>
+          <div class="card-image">
+            <div class="show-info">Add the activities that you would love to do, but, never had the  money and/or found the perfect time for it.</div>
+            <img src="/assets/heart.png" class="image">
+          </div>
+          <div class="card-image">
+            <div class="show-info">And most important of all. SAVE MONEY. You can add budgets to your activities.</div>
+            <img src="/assets/saving-money.png" class="image">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="column">
+    <h3 class="row">What are the top 10 bucket list items?</h3>
+    <div class="row item-card top-item">Fall in love - 83%</div>
+    <div class="row item-card">Go on a wine tour in Napa - 53%</div>
+    <div class="row item-card">Change someone's life for the better - 52%</div>
+    <div class="row item-card">Get to my ideal weight - 47%</div>
+    <div class="row item-card">Go on a safari - 45%</div>
+    <div class="row item-card">Ride a hot air balloon - 45%</div>
+    <div class="row item-card">See the Northern Lights - 45%</div>
+    <div class="row item-card">Go to the Super Bowl - 43%</div>
+    <div class="row item-card">Swim with dolphins - 39%</div>
+    <div class="row item-card">Travel through Europe - 38%</div>
+  </div>
+  <%= link_to "Create My Bucket List", buckets_path, class: "white-button" %>
 </div>

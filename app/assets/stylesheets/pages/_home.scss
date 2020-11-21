@@ -1,1 +1,67 @@
-// Specific CSS for your home-page
+.container {
+  padding: 80px 120px;
+}
+
+.row {
+  align-items: baseline;
+}
+
+.column-text {
+  text-align: center;
+}
+
+.column-images {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 75px;
+}
+
+.logo_list {
+  height: 50px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.blue-button{
+  margin-bottom: 20px;
+}
+
+.card-image {
+  background-color: $white;
+  padding: 20px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.item-card {
+  color: $white;
+  background-color: $blue;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.top-item {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.image {
+  height: 155px;
+  width: 155px;
+}
+
+.show-info {
+  opacity: 0;
+  position: absolute;
+  background-color: $white;
+  height: 155px;
+  width: 155px;
+  font-size: 16px;
+}
+
+.show-info:hover {
+  opacity: 1;
+}
