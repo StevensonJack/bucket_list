@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   # User profile page
-  get 'users/show', to: "user#show", as: "my_profile"
+  get 'users/:id', to: "users#show", as: "my_profile"
 
-  resources :buckets do
+  resources :buckets, :path => "my_buckets" do
     resources :activities do
       resources :offers, only: :show
     end
