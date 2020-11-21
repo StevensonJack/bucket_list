@@ -1,10 +1,15 @@
 <div class="container"> 
   <h1>
     <%= @bucket.title %>
-    <%= link_to edit_bucket_path(@bucket) do %>
-      <button><i class="fas fa-edit"></i> Edit</button>
-    <% end %>
   </h1>
+  <div>
+    <%# --- Bucket form --- %>
+    <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+      <%= f.text_field :title %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  
   <%= link_to bucket_path(@bucket),  method: :delete, data: { confirm: "Are you sure" } do %>
     <i class="fas fa-trash-alt"></i> Delete bucket
   <% end %>
@@ -17,7 +22,7 @@
     <% end %>
   </div>
 
-  <% @bucket.activities.each do |activity| %>
+  <%@activities.each do |activity| %>
     <%= link_to bucket_activity_path(@bucket, activity) do %>
       <div class="activity-card">
         <%= activity.title %>

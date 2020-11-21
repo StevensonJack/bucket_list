@@ -1,8 +1,10 @@
 class BucketsController < ApplicationController
-  before_action :find_bucket, only: [:show, :destroy]
+  before_action :find_bucket, only: [:show, :destroy, :update]
 
   def index
-    @buckets = Bucket.all
+    @buckets = Bucket.all.order(updated_at: :desc)
+    # @buckets = @buckets.unscoped { @buckets.order("update_at DESC") }
+
     @bucket = Bucket.new
   end
 
@@ -28,7 +30,7 @@ class BucketsController < ApplicationController
   def update
     if @bucket.update(bucket_params)
       flash[:success] = "Activity was successfully updated"
-      redirect_to @bucket
+      redirect_to bucket_activities_path(@bucket)
     else
       flash[:success] = "Something went wrong"
       render 'index'
