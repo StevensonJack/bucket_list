@@ -10,7 +10,7 @@ require_relative 'skyscanner.rb'
 country = "United Kingdom"
 currency = "GBP"
 originplace = "London"
-destinationplace = "Paris"
+destinationplace = "Shanghai"
 outboundpartialdate = "2020-11-22"
 inboundpartialdate = "2020-11-23"
 

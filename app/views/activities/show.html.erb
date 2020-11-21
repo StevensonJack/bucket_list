@@ -17,4 +17,14 @@
   <%= link_to bucket_activities_path do %>
     <button><i class="fas fa-undo-alt"></i> Back</button>
   <% end %>
+
+
+  <% @activity.offers.each_with_index do |offer, index| %>
+      <div>
+        <p>Offer <%= index + 1%> </p>
+         <p> <%= offer.price %> </p>
+         <p> <%= offer.start_date %> </p>
+         <p> <%= offer.end_date %> </p>
+      </div>
+  <% end %>
 </div>

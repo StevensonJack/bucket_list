@@ -5,11 +5,11 @@ class ActivitiesController < ApplicationController
   def index
     @activities = @bucket.activities.order(budget: :asc)
   end
-  
+
   def new
     @activity = Activity.new
   end
-  
+
   def create
     @activity = Activity.new(activity_params)
     @activity.bucket = @bucket
@@ -27,7 +27,7 @@ class ActivitiesController < ApplicationController
 
   def edit
   end
-  
+
   def update
       if @activity.update(activity_params)
         flash[:success] = "Activity was successfully updated"
@@ -37,7 +37,7 @@ class ActivitiesController < ApplicationController
         render 'edit'
       end
   end
-  
+
   def destroy
     if @activity.destroy
       flash[:success] = 'Activity was successfully deleted.'
