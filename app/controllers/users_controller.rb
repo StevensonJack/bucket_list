@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [ :show, :edit, :update ]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def show
+    @buckets = @user.buckets
+    @bucket = Bucket.new
   end
 
   def edit

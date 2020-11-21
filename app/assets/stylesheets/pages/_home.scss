@@ -68,3 +68,18 @@
 .show-info:hover {
   opacity: 1;
 }
+
+.show-item {
+  opacity: 0;
+  position: absolute;
+  color: $black;
+  background-color: $blue;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  text-indent: 32px;
+}
+
+.show-item:hover {
+  opacity: 1;
+}
+
