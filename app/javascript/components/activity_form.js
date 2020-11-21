@@ -5,10 +5,10 @@ function show_hide(id){
   }
 };
 
-const initShowBucketForm = () => {
-  document.getElementById("show-bucket-form").addEventListener("click",(event) => {
-   show_hide("bucket-form")
+const initShowFormActivityPage = () => {
+  document.getElementById("show-from-activity-page").addEventListener("click",(event) => {
+   show_hide("from-activity-page")
   });
 };
 
-export { initShowBucketForm };
+export { initShowFormActivityPage };

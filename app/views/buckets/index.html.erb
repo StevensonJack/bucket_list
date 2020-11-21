@@ -1,14 +1,11 @@
 <div class="container">
+  <div>
+    <%= render 'form' %>
+  </div>
   <% if @buckets.empty? %>
     <p> Start creating your firts bucket</p>
-    <div>
-      <%= render 'form' %>
-    </div>
   <% else %>
   <%# TODO: With JS hide and show BUCKET form %>
-    <div>
-      <%= render 'form' %>
-    </div>
     <div>
       <% @buckets.each do |bucket| %>
         <% if bucket.user == current_user %>
