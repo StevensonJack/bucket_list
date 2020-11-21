@@ -1,13 +1,16 @@
-<div class="container"> 
-  <h1>
-    <%= @bucket.title %>
-  </h1>
+<div class="container">
   <div>
-    <%# --- Bucket form --- %>
-    <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
-      <%= f.text_field :title %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
+    <h1>
+      <%= @bucket.title %>
+    </h1>
+    <button id="show-from-activity-page"><i class="fas fa-edit"></i></button>
+    <div id="from-activity-page">
+      <%# --- Bucket form --- %>
+      <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+        <%= f.text_field :title %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
   
   <%= link_to bucket_path(@bucket),  method: :delete, data: { confirm: "Are you sure" } do %>
