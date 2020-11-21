@@ -1,6 +1,6 @@
     <%# --- Bucket form --- %>
     <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
-      <%= f.text_field :title %>
+      <%= f.input :title, label: false, placeholder: "Bucket name" %>
       <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
-  
+    
