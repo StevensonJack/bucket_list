@@ -1,1 +1,28 @@
-<h1><%= @user.name %></h1>
+<div class="container">
+  <div class="links">
+    <%= link_to root_path, class: "blue-button" do %>
+      <i class="fas fa-undo"></i> Back
+      <% end %>
+    <%= link_to edit_user_path(@user), class: "blue-button" do %>
+      <i class="far fa-edit"></i> Edit
+      <% end %>
+  </div>
+    <img src="/assets/avatar 2.png" class="image">
+  <div>
+    <h1><strong><%= @user.name %></strong></h1>
+    <h2><%= @user.location %></h2>
+    <h3>Birthday: <%= @user.birthday %></h3>
+  </div>
+  <div>
+    <%= link_to 'My Buckets', buckets_path, class: "blue-button"%>
+        <%# --- Bucket form --- %>
+    <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+      <%= f.input :title, label: false, placeholder: "Bucket name" %>
+      <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+    <br>
+    <% @buckets.each do |bucket| %>
+      <ul><%= link_to bucket.title, bucket_activities_path(bucket) %></ul>
+    <% end %>
+  </div>
+</div>
