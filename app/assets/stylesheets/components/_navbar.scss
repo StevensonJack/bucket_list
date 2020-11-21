@@ -1,4 +1,8 @@
 .navbar-lewagon {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1;
   justify-content: space-between;
   background: white;
   border-bottom-style: solid;

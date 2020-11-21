@@ -1,0 +1,23 @@
+.footer {
+  background-color: $blue;
+  height: 320px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: $white;
+  bottom: 0;
+  width:100%;
+}
+
+.footer i {
+  margin-right: 40px;
+  font-size: 36px;
+  color: $black;
+  margin-bottom: 60px;
+}
+
+.footer-text {
+  margin-left: 40px;
+  color: $white;
+  margin-bottom: 60px;
+}
