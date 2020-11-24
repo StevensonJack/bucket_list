@@ -18,7 +18,7 @@
         <%# --- Bucket form --- %>
     <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
       <%= f.input :title, label: false, placeholder: "Bucket name" %>
-      <%= f.button :submit, class: "btn btn-primary" %>
+      <%= f.button :submit, class: "btn blue-button" %>
     <% end %>
     <br>
     <% @buckets.each do |bucket| %>
