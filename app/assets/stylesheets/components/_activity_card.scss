@@ -1,0 +1,78 @@
+.activity-perimetre {
+  padding: 5px;
+}
+
+.card-activity {
+  position: relative;
+  overflow: hidden;
+  height: 140px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.card-activity:hover {
+  text-decoration: none;
+}
+
+.card-activity img {
+  height: 100%;
+  width: 140px;
+  object-fit: cover;
+  transition: width .5s;
+}
+
+.card-activity h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  transition: font-size .6s;
+}
+
+.card-activity p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+// INFORMATION
+.card-activity .card-activity-infos {
+  padding: 16px;
+  color: black;
+}
+
+.card-activity-infos h2 {
+  font-size: 24px;
+}
+
+.card-activity-infos p {
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.card-activity-infos i {
+  color: $blue;
+}
+
+// HOVER EFECT
+
+.card-activity:hover img {
+  width: 100%;
+  background-image: cover;
+  background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));
+  background-position: center;
+}
+
+.card-activity:hover h2 {
+  color: white;
+  font-size: 32px;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -8,6 +8,7 @@
   display: inline-block;
   font-size: 16px;
   border: $blue 3px solid;
+  margin: 0;
 }
 
 .large-button {
@@ -33,6 +34,24 @@
 }
 
 .white-button:hover {
+  text-decoration: none;
+  background-color: $blue;
+  color: $white;
+}
+
+.empty-button {
+  color: $blue;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: $blue 3px solid;
+  margin: 0;
+}
+
+.empty-button:hover {
   text-decoration: none;
   background-color: $blue;
   color: $white;

@@ -1,0 +1,86 @@
+// ***  BUCKET HEADER ***
+.container.activity {
+  margin-bottom: 12vh;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+}
+
+.activity-header {
+  background-size: cover;
+  background-position: center;
+  padding: 8vh;
+  justify-content: left;
+  align-items: center;
+}
+
+.activity-title {
+  display: inline-block;
+  margin: 0;
+  color: white;
+}
+
+.activity-title h1 {
+  margin-right: 5px;
+}
+
+// **8 LINKS ***
+
+// DELETE
+.activity-links {
+  position: relative;
+  padding: 7vh;
+}
+
+.delete-bucket {
+  background-color: none;
+  display: inline-block;
+  padding: 8px 16px;
+  transition: background-color .3s;
+}
+
+.delete-bucket:hover {
+  text-decoration: none;
+  color: $white;
+  background-color: $red;
+  border-radius: 5px;
+}
+
+//BACK
+.activity-back {
+  position: absolute;
+  left: 50px;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+.new-activity {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 576px) {
+  .activity-back {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%);
+    background-color: white;
+  }
+}
+
+// FORM
+#bucket_title {
+  padding: 6px;
+  border-radius: 5px;
+  margin-right: 3px;
+  border: 1px solid grey;
+}

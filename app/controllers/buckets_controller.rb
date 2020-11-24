@@ -12,6 +12,7 @@ class BucketsController < ApplicationController
     @buckets = Bucket.all
     @bucket = Bucket.new(bucket_params)
     @bucket.user = current_user
+    @bucket.title.capitalize!
     if @bucket.save
       flash[:success] = "Bucket successfully created"
       redirect_to bucket_activities_path(@bucket)

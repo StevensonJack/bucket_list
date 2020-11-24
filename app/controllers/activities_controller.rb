@@ -12,6 +12,7 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.new(activity_params)
+    @activity.title.capitalize!
     @activity.bucket = @bucket
     if @activity.save
       flash[:success] = "Activity successfully created"
