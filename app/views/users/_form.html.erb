@@ -1,0 +1,9 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :name %>
+  <%= f.input :location %>
+  <%= f.input :birthday %>
+  <%= f.button :submit, class: "blue-button" %>
+  <%= link_to user_path, class: "white-button" do %>
+    <i class="fas fa-undo"></i> Back
+  <% end %>
+<% end %>
