@@ -1,8 +1,6 @@
-<div class="container no-padding bucket">
-  <div class="container">
-  <%= link_to "My Profile", my_profile_path(current_user), class: "blue-button my-profile-button" %>
-  <div>
-    
+<div class="container bucket">
+  <%= link_to "My Profile", my_profile_path(current_user), class: "blue-button my-profile-button" %> 
+  
   <div id="bucket-form">
     <%= render 'form' %>
   </div>
@@ -14,11 +12,11 @@
         <% if bucket.user == current_user %>
           <div class="no-padding col-sm-12 col-md-6 col-lg-4">
             <%= link_to bucket_activities_path(bucket) do %>
-            <div class="bucket-card">
-              <%= image_tag "https://source.unsplash.com/random/800x600", :alt => "bucket image", :style => "background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%)", class: "bucket-image" %>
-              <div class="bucket-text"><%= bucket.title %></div>
-            </div>
-          <% end %>
+              <div class="bucket-card">
+                <%= image_tag "https://source.unsplash.com/random/800x600", :alt => "bucket image", :style => "background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%)", class: "bucket-image" %>
+                <div class="bucket-text"><%= bucket.title %></div>
+              </div>
+            <% end %>
           </div>
         <% end %>
       <% end %>
