@@ -1,11 +1,11 @@
 <div class="container bucket">
-  <%= link_to "My Profile", my_profile_path(current_user), class: "blue-button my-profile-button" %> 
-  
+  <%= link_to "My Profile", my_profile_path(current_user), class: "blue-button my-profile-button" %>
+
   <div id="bucket-form">
     <%= render 'form' %>
   </div>
   <% if @buckets.empty? %>
-    <p> Start creating your firts bucket</p>
+    <p> Start creating your first bucket</p>
   <% else %>
     <div class="row">
       <% @buckets.each do |bucket| %>
