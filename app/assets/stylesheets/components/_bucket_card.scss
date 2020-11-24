@@ -1,0 +1,64 @@
+// GENERAL SETTINGS
+
+.container.no-padding{
+  padding: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+// *** FORM ***
+#bucket-form {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+// *** BUCKET CARD ***
+.bucket-card {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  height: 250px;
+}
+
+.bucket-card:hover {
+  text-decoration: none;
+}
+
+// BACKGROUND IMAGE
+.bucket-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.bucket-card:hover .bucket-image {
+  -webkit-filter: blur(0px);
+  filter: blur(0px);
+}
+
+  // BUCKET TEXT
+.bucket-text {
+  margin: 0;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  z-index: 2;
+  // Like this you can center a div inside other div
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,19 +1,21 @@
-<div class="container">
-  <div>
+<div class="container no-padding bucket">
+  <div id="bucket-form">
     <%= render 'form' %>
   </div>
   <% if @buckets.empty? %>
     <p> Start creating your firts bucket</p>
   <% else %>
-  <%# TODO: With JS hide and show BUCKET form %>
-    <div>
+    <div class="row">
       <% @buckets.each do |bucket| %>
         <% if bucket.user == current_user %>
-          <%= link_to bucket_activities_path(bucket) do %>
+          <div class="no-padding col-sm-12 col-md-6 col-lg-4">
+            <%= link_to bucket_activities_path(bucket) do %>
             <div class="bucket-card">
-              <%= bucket.title %>
+              <%= image_tag "https://source.unsplash.com/random/800x600", :alt => "bucket image", :style => "background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%)", class: "bucket-image" %>
+              <div class="bucket-text"><%= bucket.title %></div>
             </div>
           <% end %>
+          </div>
         <% end %>
       <% end %>
     </div>

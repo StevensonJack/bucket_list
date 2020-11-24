@@ -1,35 +1,54 @@
-<div class="container">
-  <div>
-    <h1>
-      <%= @bucket.title %>
-    </h1>
-    <button id="show-from-activity-page"><i class="fas fa-edit"></i></button>
-    <div id="from-activity-page">
-      <%# --- Bucket form --- %>
-      <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
-        <%= f.text_field :title %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+<div class="container-fluid">
+  <div class="activity-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://source.unsplash.com/random/800x600');">
+    <%# --- Bucket title --- %>
+    <div class="activity-title">
+      <div id="show-from-activity-page" class="d-flex align-items-center" style="cursor: pointer;">
+        <h1><%= @bucket.title %></h1>
+        <p><i class="fas fa-edit"></i></p>
+      </div>
+
+        <%# --- Bucket form --- %>
+      <div id="from-activity-page" style="display:none;">
+        <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+          <%= f.text_field :title %>
+          <%= f.button :submit, class: "blue-button" %>
+        <% end %>
+      </div>
+
+      <%= link_to bucket_path(@bucket),  method: :delete, data: { confirm: "Are you sure" }, class: "delete-bucket" do %>
+        <i class="fas fa-trash-alt"></i> Delete bucket
       <% end %>
     </div>
   </div>
+</div>
   
-  <%= link_to bucket_path(@bucket),  method: :delete, data: { confirm: "Are you sure" } do %>
-    <i class="fas fa-trash-alt"></i> Delete bucket
-  <% end %>
-  <div>
-    <%= link_to new_bucket_activity_path do %>
-      <button class="btn btn-primary">New activity</button>
-    <% end %>
+<%# --- Bucket body %>
+<div class="container no-padding activity">
+  <div class="activity-links">
     <%= link_to buckets_path do %>
-      <button><i class="fas fa-undo-alt"></i> Back</button>
+      <p class="empty-button activity-back"><i class="fas fa-undo-alt"></i> Back</p>
+    <% end %>
+    <%= link_to new_bucket_activity_path do %>
+      <p class="blue-button large-button new-activity">New activity</p>
     <% end %>
   </div>
-
-  <%@activities.each do |activity| %>
-    <%= link_to bucket_activity_path(@bucket, activity) do %>
-      <div class="activity-card">
-        <%= activity.title %>
+  <div class="row d-flex justify-content-center">
+    <%@activities.each do |activity| %>
+      <div class="activity-perimetre col-sm-12 col-md-10 col-lg-8">
+        <%= link_to bucket_activity_path(@bucket, activity) do %>
+          <div class="card-activity">
+            <%= image_tag "https://source.unsplash.com/random/800x600", :alt => "Activity image" %>
+            <div class="card-activity-infos">
+              <h2><%= activity.title %></h2>
+              <div class="d-flex align-middle">
+                <p><i class="fas fa-plane"></i> to <%= activity.location %></p>
+                <p><i class="fas fa-user"></i> <%= activity.people_number %></p>
+                <p><i class="fas fa-money-bill"></i> <%= activity.budget %>€</p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>
