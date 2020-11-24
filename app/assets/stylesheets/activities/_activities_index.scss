@@ -6,9 +6,20 @@
 .container-fluid {
   padding: 0;
 }
+.container-fluid.activity {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .row {
   margin: 0;
+}
+
+.max-header-width {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .activity-header {
@@ -29,14 +40,20 @@
   margin-right: 5px;
 }
 
-// **8 LINKS ***
-
-// DELETE
-.activity-links {
-  position: relative;
-  padding: 7vh;
+// *** LINKS ***
+.center-activity-links {
+  padding: 0 8vh;
 }
 
+.activity-links {
+  padding: 8vh 0;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1200px;
+}
+
+// DELETE
 .delete-bucket {
   background-color: none;
   display: inline-block;
@@ -53,21 +70,15 @@
 
 //BACK
 .activity-back {
-  position: absolute;
-  left: 50px;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  // position: absolute;
+  // top: 50%;
+  // left: calc(8vh + 44px);
+  // transform: translate(-50%, -50%);
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-
-.new-activity {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@media (max-width: 576px) {
+@media (max-width: 767px) {
   .activity-back {
     position: absolute;
     left: 50%;
@@ -77,6 +88,15 @@
   }
 }
 
+// NEW
+.new-activity {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
 // FORM
 #bucket_title {
   padding: 6px;
@@ -84,3 +104,5 @@
   margin-right: 3px;
   border: 1px solid grey;
 }
+
+// BODY
