@@ -68,3 +68,6 @@ gem 'faker'
 
 # Unsplash
 gem 'unsplash'
+
+gem 'dotenv-rails', groups: [:development, :test]
+
