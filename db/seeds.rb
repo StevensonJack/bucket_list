@@ -77,7 +77,6 @@ users.each do |user|
     bucket = Bucket.new(
       title: "My travels",
       user: user
-      photo: Unsplash::Photo.search("#{@bucket.title}").sample
     )
     bucket.save!
     puts "Creating activities..."

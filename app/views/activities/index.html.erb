@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="activity-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://source.unsplash.com/random/800x600');">
+  <div class="activity-header" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8)0%,rgba(0,0,0,0.2)50%), url('<%= @bucket.photo %>');">
     <div class="max-header-width">
       <%# --- Bucket title --- %>
       <div class="activity-title">
@@ -18,6 +18,12 @@
 
         <%= link_to bucket_path(@bucket),  method: :delete, data: { confirm: "Are you sure" }, class: "delete-bucket" do %>
           <i class="fas fa-trash-alt"></i> Delete bucket
+        <% end %>
+      </div>
+      <div class="upload-bucket-activity">
+        <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit %>
         <% end %>
       </div>
     </div>
@@ -41,7 +47,7 @@
       <div class="activity-perimetre col-sm-12 col-md-10 col-lg-8">
         <%= link_to bucket_activity_path(@bucket, activity) do %>
           <div class="card-activity">
-            <%= image_tag "https://source.unsplash.com/random/800x600", :alt => "Activity image" %>
+            <%= image_tag "#{activity.photo}", :alt => "Activity image" %>
             <div class="card-activity-infos">
               <h2><%= activity.title %></h2>
               <div class="d-flex align-middle">
