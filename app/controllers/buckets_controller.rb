@@ -13,6 +13,7 @@ class BucketsController < ApplicationController
     @bucket = Bucket.new(bucket_params)
     @bucket.user = current_user
     @bucket.title.capitalize!
+    @bucket.photo = Unsplash::Photo.search("#{@bucket.title}").sample
     if @bucket.save
       flash[:success] = "Bucket successfully created"
       redirect_to bucket_activities_path(@bucket)
@@ -53,6 +54,6 @@ class BucketsController < ApplicationController
   end
 
   def bucket_params
-    params.require(:bucket).permit(:title)
+    params.require(:bucket).permit(:title, :photo)
   end
 end
