@@ -15,15 +15,17 @@ class Activity < ApplicationRecord
     originplace = "London"
     # destinationplace = "Paris"
     destinationplace = self.location
-    leaving_date = "2020-11-25"
-    return_date = "2020-11-27"
+    leaving_date = "2020-11-28"
+    return_date = "2020-11-29"
 
     results = Skyscanner.new(country, currency, originplace, destinationplace, leaving_date, return_date).search_flights
 
     results.each do |quote|
-      offer = Offer.new(rating: 0, price: quote["MinPrice"], start_date: leaving_date, end_date: return_date)
+      offer = Offer.new(rating: 0, price: quote["MinPrice"], start_date: leaving_date, end_date: return_date, origin: quote[:OriginPlace].first["Name"], destination: quote[:DestinationPlace].first["Name"], flight_carrier: quote[:OutboundCarrier].first["Name"])
       offer.activity = self
       offer.save
     end
   end
 end
+
+
