@@ -1,3 +1,21 @@
+.btn-primary {
+  background-color: $blue;
+  color: white;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: $blue 3px solid;
+}
+
+.btn-primary:hover {
+  text-decoration: none;
+  background-color: white;
+  color: $blue;
+}
+
 .blue-button {
   background-color: $blue;
   color: white;

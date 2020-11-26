@@ -7,8 +7,10 @@
       <i class="far fa-edit"></i> Edit
       <% end %>
   </div>
-    <img src="/assets/avatar 2.png" class="image">
+  <br>
+    <%= image_tag "avatar 2.png", class: "image" %>
   <div>
+    <br>
     <h1><strong><%= @user.name %></strong></h1>
     <h2><%= @user.location %></h2>
     <h3>Birthday: <%= @user.birthday %></h3>
@@ -18,7 +20,7 @@
         <%# --- Bucket form --- %>
     <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
       <%= f.input :title, label: false, placeholder: "Bucket name" %>
-      <%= f.button :submit, class: "btn blue-button" %>
+      <%= f.button :submit, class: "btn btn-primary" %>
     <% end %>
     <br>
     <% @buckets.each do |bucket| %>
