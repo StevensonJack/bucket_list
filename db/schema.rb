@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2020_11_26_195917) do
     t.bigint "bucket_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "photo"
+    t.float "rating"
     t.index ["bucket_id"], name: "index_activities_on_bucket_id"
   end
 
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_195917) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "photo"
     t.index ["user_id"], name: "index_buckets_on_user_id"
   end
 
