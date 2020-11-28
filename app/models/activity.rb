@@ -1,7 +1,8 @@
 class Activity < ApplicationRecord
+  CATEGORY = ["Flights", "Experiences"]
   belongs_to :bucket
   has_many :offers, dependent: :destroy
-  validates :title, :budget, :location, :time_frame, :people_number, :category, presence: true
+  validates :title, :budget, :location, :time_frame, :people_number, :category, :photo, presence: true
 
   after_update :skyscanner_api
 
