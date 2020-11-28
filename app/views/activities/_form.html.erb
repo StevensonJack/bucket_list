@@ -4,6 +4,6 @@
   <%= f.input :location %>
   <%= f.input :time_frame %>
   <%= f.input :people_number %>
-  <%= f.input :category %>
+  <%= f.input :category, collection: Activity::CATEGORY %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
