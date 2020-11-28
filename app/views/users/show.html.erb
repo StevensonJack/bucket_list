@@ -7,28 +7,37 @@
       <i class="far fa-edit"></i> Edit
       <% end %>
   </div>
-  <br>
+
   <% if @user.photo.attached? %>
-    <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fit %>
+    <%= cl_image_tag @user.photo.key, height: 400, width: 400, crop: :fill, class: "profile-photo"%>
   <% else %>
     <%= image_tag "avatar 2.png", class: "image" %>
   <% end %>
-  <div>
-    <br>
+
+  <div class="profile-card">
     <h1><strong><%= @user.name %></strong></h1>
     <h2><%= @user.location %></h2>
-    <h3>Birthday: <%= @user.birthday %></h3>
+    <h4>Birthday: <%= @user.birthday %></h4>
   </div>
-  <div>
-    <%= link_to 'My Buckets', buckets_path, class: "blue-button"%>
+
+  <%= link_to 'See All My Buckets', buckets_path, class: "blue-button"%>
         <%# --- Bucket form --- %>
-    <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
-      <%= f.input :title, label: false, placeholder: "Bucket name" %>
-      <%= f.button :submit, class: "btn btn-primary" %>
-    <% end %>
-    <br>
+  <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+    <%= f.input :title, label: false, placeholder: "Bucket name" %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+  <br>
+  <div class="row bucket-wrap">
     <% @buckets.each do |bucket| %>
-      <ul><%= link_to bucket.title, bucket_activities_path(bucket) %></ul>
+      <div class="no-padding col-sm-6 col-md-2 col-lg-3">
+        <%= link_to bucket_activities_path(bucket) do %>
+          <div class="bucket-card">
+            <div class="bucket-image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8)0%,rgba(0,0,0,0.2)50%), url('<%= bucket.photo %>');"></div>
+            <%#= image_tag "#{bucket.photo}", :alt => "bucket image", :style => "background-image: linear-gradient(135deg, rgba(0,0,0,0.8),rgba(0,0,0,0.2))", class: "bucket-image" %>
+            <h2 class="bucket-text"><%= bucket.title %></h2>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
