@@ -49,7 +49,7 @@ class BucketsController < ApplicationController
       redirect_to buckets_path, notice: "Ups, we can't delete the bucket"
     end
   end
-  
+
   private
 
   def find_bucket
