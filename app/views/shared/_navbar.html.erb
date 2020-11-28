@@ -20,7 +20,7 @@
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, height: 300, width: 300, crop: :fit, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <% else %>
-            <%= image_tag "avatar 2.png", class: "image" %>
+            <%= image_tag "avatar 2.png", class: "image", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false%>
           <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "My Profile", my_profile_path(current_user) , class: "dropdown-item" %>
