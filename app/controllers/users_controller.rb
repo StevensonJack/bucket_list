@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
 
   def show
-    @buckets = @user.buckets
+    @buckets = @user.buckets.limit(8)
     @bucket = Bucket.new
   end
 
