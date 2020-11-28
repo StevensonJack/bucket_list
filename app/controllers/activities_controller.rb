@@ -24,6 +24,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @offers = @activity.offers.limit(3)
   end
 
   def edit

@@ -19,7 +19,7 @@
   <% end %>
 
   <div class="row">
-    <% @activity.offers.each_with_index do |offer, index| %>
+    <% @offers.each_with_index do |offer, index| %>
         <div class="offer-card">
           <p>Offer <%= index + 1%> </p>
            <p> <%= offer.price %> </p>
