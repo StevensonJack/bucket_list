@@ -32,3 +32,22 @@
 .bucket-wrap > *:hover { 
   opacity: 1; transform: scale(1); transition-delay: 0ms, 0ms; 
 }
+
+// EMPTY BUCKETS
+.empty-buckets {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  color: rgb(88, 88, 88);
+}
+
+.empty-buckets-image {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+  height: auto;
+}
+
+.empty-buckets i {
+  color: $blue;
+}

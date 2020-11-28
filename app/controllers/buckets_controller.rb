@@ -2,9 +2,8 @@ class BucketsController < ApplicationController
   before_action :find_bucket, only: [:show, :destroy, :update]
 
   def index
-    @buckets = Bucket.all.order(updated_at: :desc)
-    # @buckets = @buckets.unscoped { @buckets.order("update_at DESC") }
-
+    # @buckets = Bucket.where(user: current_user).order(updated_at: :desc)
+    @buckets = current_user.buckets.order(updated_at: :desc)
     @bucket = Bucket.new
   end
 

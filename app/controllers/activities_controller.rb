@@ -14,7 +14,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
     @activity.title.capitalize!
     @activity.bucket = @bucket
-    @activity.photo = Unsplash::Photo.search("#{@activity.location}", orientation = "landscape").first.urls.regular 
+    @activity.photo = select_photo.urls.regular
     if @activity.save
       flash[:success] = "Activity successfully created"
       redirect_to bucket_activity_path(@bucket, @activity)
@@ -64,5 +64,15 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit(:title, :budget, :location, :time_frame, :people_number, :category, :photo)
+  end
+
+  def select_photo
+    photo = nil
+
+    while photo.nil?
+      photo = Unsplash::Photo.search("#{@activity.location}", orientation = "landscape")[rand(1..30)]
+    end
+
+    return photo
   end
 end
