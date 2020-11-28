@@ -17,11 +17,6 @@ class Activity < ApplicationRecord
     destinationplace = self.location
     leaving_date = (Time.now + 10.days).strftime("%Y-%m-%d")
     return_date = (Time.now + 10.days + self.time_frame.to_i.days).strftime("%Y-%m-%d")
-    # return_date = (Time.now + 10.days).strftime("%Y-%m-%d")
-    # destinationplace = "Paris"
-    # leaving_date = "2020-11-28"
-    # return_date = "2020-11-29"
-    # leaving_date = (Time.now + 900000).strftime("%Y/%m/%d")
 
     results = Skyscanner.new(country, currency, originplace, destinationplace, leaving_date, return_date).search_flights
 
