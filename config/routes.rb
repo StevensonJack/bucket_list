@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  # for sidekiq admin panel
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   #user routes
   get 'users/:id', to: "users#show", as: "my_profile"
   resources :users, only: [ :show, :edit, :update, :destroy ] do

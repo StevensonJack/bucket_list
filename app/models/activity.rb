@@ -4,7 +4,9 @@ class Activity < ApplicationRecord
   has_many :offers, dependent: :destroy
   validates :title, :budget, :location, :time_frame, :people_number, :category, :photo, presence: true
 
-  after_update :skyscanner_api
+  # after_update :skyscanner_api
+  after_create :skyscanner_job
+  after_update :skyscanner_job
 
   private
 
@@ -25,5 +27,9 @@ class Activity < ApplicationRecord
       offer.activity = self
       offer.save
     end
+  end
+
+  def skyscanner_job
+    SkyscannerJob.perform_now(self)
   end
 end

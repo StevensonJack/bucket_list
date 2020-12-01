@@ -73,3 +73,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'cloudinary', '~> 1.16.0'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
