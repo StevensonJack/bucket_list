@@ -1,5 +1,7 @@
 class Activity < ApplicationRecord
   CATEGORY = ["Flights", "Experiences"]
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
   belongs_to :bucket
   has_many :offers, dependent: :destroy
   validates :title, :budget, :location, :time_frame, :people_number, :category, :photo, presence: true
