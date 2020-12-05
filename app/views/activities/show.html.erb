@@ -1,36 +1,60 @@
+<div class="container-fluid">
+  <div class="offer-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @activity.photo %>');">
+  </div>
+</div>
 <div class="container">
-  <%= link_to edit_bucket_activity_path do %>
-    <button><i class="fas fa-edit"></i> Edit</button>
-  <% end %>
-  <%= link_to bucket_activity_path(@bucket), method: :delete, data: { confirm: "Are you sure?" } do %>
-    <i class="fas fa-trash-alt"></i> Delete
-  <% end %>
+  <div class="activity-details p-4">
+    <p><strong>Title:</strong> <%= @activity.title %></p>
+    <p><strong>Budget:</strong> <%= @activity.budget %></p>
+    <p><strong>Location:</strong> <%= @activity.location %></p>
+    <p><strong>Time frame:</strong> <%= @activity.time_frame %></p>
+    <p><strong>People number:</strong> <%= @activity.people_number %></p>
+    <p><strong>Category:</strong> <%= @activity.category %></p>
 
-  <p><strong>Title:</strong> <%= @activity.title %></p>
-  <p><strong>Budget:</strong> <%= @activity.budget %></p>
-  <p><strong>Location:</strong> <%= @activity.location %></p>
-  <p><strong>Time frame:</strong> <%= @activity.time_frame %></p>
-  <p><strong>People number:</strong> <%= @activity.people_number %></p>
-  <p><strong>Category:</strong> <%= @activity.category %></p>
-
-
-  <%= link_to bucket_activities_path do %>
-    <button><i class="fas fa-undo-alt"></i> Back</button>
-  <% end %>
-
-  <div class="row">
-    <% @offers.each_with_index do |offer, index| %>
-        <div class="offer-card">
-          <p>Offer <%= index + 1%> </p>
-           <p> <%= offer.price %> </p>
-           <p> <%= offer.origin %> </p>
-           <p> <%= offer.destination %> </p>
-           <p> <%= offer.flight_carrier %> </p>
-           <p> <%= offer.start_date %> </p>
-           <p> <%= offer.end_date %> </p>
-           <p> <%= link_to "Book Now", offer.skyscanner_link, target: :_blank %> </p>
-        </div>
+    <%= link_to edit_bucket_activity_path do %>
+      <button><i class="fas fa-edit"></i> Edit</button>
+    <% end %>
+    <%= link_to bucket_activity_path(@bucket), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="fas fa-trash-alt"></i> Delete
+    <% end %>
+    <%= link_to bucket_activities_path do %>
+      <button><i class="fas fa-undo-alt"></i> Back</button>
     <% end %>
   </div>
-
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <% @offers.each_with_index do |offer, index| %>
+      <div class="col-sm">
+        <div class="offer-card p-4">
+          <div class="offer-title d-flex justify-content-between">
+            <h1>
+              Offer <%= index + 1%>
+            </h1>
+            <h3>
+              <%= offer.price.to_i %>€
+            </h3>
+            <!-- <h2> <%= offer.price.to_i %>€ </h2> -->
+          </div>
+          <div class="offer-destination d-flex">
+            <p class="pr-2"> <%= offer.origin %> </p>
+            <i class="fas fa-arrow-right"></i>
+            <p class="pl-2"> <%= offer.destination %> </p>
+          </div>
+          <div class="offer-carrier">
+            <p> <%= offer.flight_carrier %> </p>
+          </div>
+          <div class="offer-dates d-flex">
+            <p class="pr-1"> <%= offer.start_date %> </p>
+            <p> <%= offer.end_date %> </p>
+          </div>
+          <div class="offer-book-button">
+            <p><%= link_to "Book Now", offer.skyscanner_link, target: :_blank, class: "create_bucket white-button" %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
