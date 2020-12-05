@@ -28,6 +28,7 @@
            <p> <%= offer.flight_carrier %> </p>
            <p> <%= offer.start_date %> </p>
            <p> <%= offer.end_date %> </p>
+           <p> <%= link_to "Book Now", offer.skyscanner_link, target: :_blank %> </p>
         </div>
     <% end %>
   </div>
