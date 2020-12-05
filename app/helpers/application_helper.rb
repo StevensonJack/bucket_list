@@ -8,5 +8,4 @@ module ApplicationHelper
       return "red"
     end
   end
-
 end
