@@ -29,10 +29,13 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 import { initShowBucketForm } from '../components/bucket_form';
 import { initShowFormActivityPage } from '../components/activity_form';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initShowFormActivityPage();
+  initMapbox();
   // initShowBucketForm();
 });
+
