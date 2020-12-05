@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="links">
+  <div class="links margin-top-bottom">
     <%= link_to root_path, class: "blue-button" do %>
       <i class="fas fa-undo"></i> Back
       <% end %>
@@ -14,13 +14,13 @@
     <%= image_tag "avatar 2.png", class: "image" %>
   <% end %>
 
-  <div class="profile-card">
+  <div class="profile-card margin-top-bottom">
     <h1><strong><%= @user.name %></strong></h1>
     <h2><%= @user.location %></h2>
     <h4>Birthday: <%= @user.birthday %></h4>
   </div>
 
-  <%= link_to 'See All My Buckets', buckets_path, class: "blue-button"%>
+  <%= link_to 'See All My Buckets', buckets_path, class: "blue-button margin-top-bottom"%>
         <%# --- Bucket form --- %>
   <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
     <%= f.input :title, label: false, placeholder: "Bucket name" %>

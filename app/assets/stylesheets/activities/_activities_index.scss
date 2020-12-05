@@ -17,6 +17,9 @@
 }
 
 .max-header-width {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
   max-width: 1200px;
   margin-right: auto;
   margin-left: auto;
@@ -25,7 +28,7 @@
 .activity-header {
   background-size: cover;
   background-position: center;
-  padding: 8vh;
+  padding: 9vh;
   justify-content: left;
   align-items: center;
 }
@@ -96,8 +99,6 @@
   transform: translate(-50%, -50%);
 }
 
-
-// FORM
 #bucket_title {
   padding: 6px;
   border-radius: 5px;
@@ -105,4 +106,18 @@
   border: 1px solid grey;
 }
 
-// BODY
+// UPLOAD PHOTO
+.upload-bucket-photo {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+.upload-bucket-photo .circle-button {
+  margin-right: 8px;
+}
+
+#bucket_photo {
+  color: $blue;
+  margin-right: 0.8vw;
+}

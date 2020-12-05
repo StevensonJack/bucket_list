@@ -12,8 +12,6 @@ class BucketsController < ApplicationController
     @bucket = Bucket.new(bucket_params)
     @bucket.user = current_user
     @bucket.title.capitalize!
-
-   
     @bucket.photo = select_photo.urls.regular
 
     if @bucket.save

@@ -1,5 +1,5 @@
 <%= simple_form_for [@bucket, @activity] do |f| %>
-  <%= f.input :title %>
+  <%= f.input :title, input_html: { maxlength: 35 } %>
   <%= f.input :budget %>
   <%= f.input :location %>
   <%= f.input :time_frame %>

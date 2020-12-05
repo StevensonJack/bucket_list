@@ -67,7 +67,7 @@ user_name.each do |name|
         location: data[:city],
         time_frame: rand(3..20),
         people_number: rand(1..5),
-        category: "flights",
+        category: Activity::CATEGORY[0],
         photo: data[:photo].urls.regular,
         bucket: bucket
       )

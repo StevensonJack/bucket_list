@@ -28,11 +28,13 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initShowBucketForm } from '../components/bucket_form';
-import { initShowFormActivityPage } from '../components/activity_form';
+// import { initShowFormActivityPage } from '../components/activity_form';
+import { initShowBucketPhoto } from '../components/bucket_photo';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  initShowFormActivityPage();
-  // initShowBucketForm();
+  // initShowFormActivityPage();
+  initShowBucketForm();
+  initShowBucketPhoto();
 });
