@@ -3,13 +3,13 @@
     <div class="max-header-width">
       <%# --- Bucket title --- %>
       <div class="activity-title">
-        <div id="show-from-activity-page" class="d-flex align-items-center" style="cursor: pointer;">
+        <div id="show-form" class="d-flex align-items-center" style="cursor: pointer; display: block;">
           <h1><%= @bucket.title %></h1>
           <p><i class="fas fa-edit"></i></p>
         </div>
 
           <%# --- Bucket form --- %>
-        <div id="from-activity-page" style="display:none;">
+        <div id="form" style="display:none;">
           <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
             <%= f.text_field :title %>
             <%= f.button :submit, class: "blue-button" %>
@@ -20,11 +20,15 @@
           <i class="fas fa-trash-alt"></i> Delete bucket
         <% end %>
       </div>
-      <div class="upload-bucket-activity">
-        <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
-          <%= f.input :photo, as: :file %>
-          <%= f.button :submit %>
-        <% end %>
+
+      <div class="upload-bucket-photo">
+        <div id="upload-photo-form" style="display: none;">
+          <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
+            <%= f.input :photo, as: :file, label: false %>
+            <%= f.submit 'Update photo', class: "blue-button" %>
+          <% end %>
+        </div>
+        <button id="show-bucket-photo" class="empty-button circle-button"><i class="fas fa-camera"></i></button>
       </div>
     </div>
   </div>
@@ -42,20 +46,25 @@
 
 <%# --- Bucket body %>
 <div class="container-fluid no-padding activity">
-  <div class="row d-flex justify-content-center">
+  <div id="activity-cards" class="row d-flex justify-content-center">
     <%@activities.each do |activity| %>
       <div class="activity-perimetre col-sm-12 col-md-10 col-lg-8">
         <%= link_to bucket_activity_path(@bucket, activity) do %>
           <div class="card-activity">
-            <%= image_tag "#{activity.photo}", :alt => "Activity image" %>
+            <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= activity.photo %>');"></div>
             <div class="card-activity-infos">
-              <h2><%= activity.title %></h2>
-              <div class="d-flex align-middle">
+              <h2><%= activity.title %> change</h2>
+              <div class="d-flex align-middle card-activity-description">
                 <p><i class="fas fa-plane"></i> to <%= activity.location %></p>
                 <p><i class="fas fa-user"></i> <%= activity.people_number %></p>
                 <p><i class="fas fa-money-bill"></i> <%= activity.budget %>€</p>
               </div>
             </div>
+              <% if activity.offers.blank? %>
+                <p class="activity-offer-price no-offer">No offers</p>
+              <% else %>
+                <p class="activity-offer-price <% activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
+              <% end %>
           </div>
         <% end %>
       </div>

@@ -5,7 +5,7 @@
 .card-activity {
   position: relative;
   overflow: hidden;
-  height: 140px;
+  height: 150px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -17,26 +17,16 @@
   text-decoration: none;
 }
 
-.card-activity img {
+.activity-image {
   height: 100%;
-  width: 140px;
-  object-fit: cover;
+  width: 150px;
+  background-size: cover;
+  background-position: center;
   transition: width .5s;
 }
 
-.card-activity h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-  transition: font-size .6s;
-}
-
 .card-activity p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
+  margin: 0;
 }
 
 // INFORMATION
@@ -45,31 +35,80 @@
   color: black;
 }
 
-.card-activity-infos h2 {
-  font-size: 24px;
+.card-activity-infos {
+  max-width: 45vw;
 }
 
-.card-activity-infos p {
+.card-activity-infos h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  transition: font-size .6s;
+}
+
+.card-activity-description {
+  flex-wrap: wrap;
+}
+
+.card-activity-description p {
   font-size: 16px;
   margin-right: 20px;
 }
 
-.card-activity-infos i {
+.card-activity-description i {
   color: $blue;
 }
 
-// HOVER EFECT
-
-.card-activity:hover img {
-  width: 100%;
-  background-image: cover;
-  background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));
-  background-position: center;
+// OFFER PRICE
+.activity-offer-price {
+  position: absolute;
+  padding: 8px 0;
+  width: 95px;
+  text-align: center;
+  font-size: 1.3rem;
+  color: white;
+  border-radius: 5px;
+  top: 50%;
+  right: 0vw;
+  transform: translate(-50%, -50%);
 }
 
-.card-activity:hover h2 {
+.activity-offer-price.no-offer {
+  font-size: 16px; 
+  background-color: grey; 
+  padding: 13px 0;
+}
+
+// RATING COLORS
+.activity-offer-price.green {
+  background-color: $green;
+}
+
+.activity-offer-price.orange {
+  background-color: $orange;
+}
+
+.activity-offer-price.red {
+  background-color: $red;
+}
+
+// HOVER EFECT
+.card-activity:hover .card-activity-infos{
+  padding: 0;
+}
+
+.card-activity:hover .card-activity-infos p {
+  display: none;
+}
+
+.card-activity:hover .activity-image {
+  width: 100%;
+}
+
+.card-activity:hover .card-activity-infos h2 {
+  visibility: visible;
   color: white;
-  font-size: 32px;
+  font-size: 1.8rem;
   z-index: 2;
   position: absolute;
   top: 50%;
@@ -79,4 +118,25 @@
 
 .card-activity:hover .card-activity-infos {
   text-align: center;
+}
+
+@media (max-width: 580px) {
+  .card-activity-infos {
+    max-width: 50vw;
+  }
+  
+  .card-activity-infos h2 {
+    font-size: 1.3rem;
+  }
+
+  .activity-offer-price {
+    transform: none;
+    top: 5px;
+    left: 5px;
+    font-size: 1rem;
+  }
+
+  .activity-offer-price.no-offer  {
+    padding: 8px 0;
+  }
 }

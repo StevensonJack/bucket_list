@@ -28,14 +28,16 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initShowBucketForm } from '../components/bucket_form';
-import { initShowFormActivityPage } from '../components/activity_form';
+// import { initShowFormActivityPage } from '../components/activity_form';
+import { initShowBucketPhoto } from '../components/bucket_photo';
 import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  initShowFormActivityPage();
+  // initShowFormActivityPage();
+  initShowBucketForm();
+  initShowBucketPhoto();
   initMapbox();
-  // initShowBucketForm();
 });
 

@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
   before_action :find_bucket, only: [:show, :edit, :update, :index, :new, :create]
 
   def index
-    @activities = @bucket.activities.order(budget: :asc)
+    @activities = @bucket.activities.order(rating: :asc) 
     @markers = @activities.map do |activity|
       {
         lat: activity.latitude,
@@ -38,13 +38,14 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-      if @activity.update(activity_params)
-        flash[:success] = "Activity was successfully updated"
-        redirect_to bucket_activity_path(@bucket)
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+    @activity.title.capitalize!
+    if @activity.update(activity_params)
+      flash[:success] = "Activity was successfully updated"
+      redirect_to bucket_activity_path(@bucket)
+    else
+      flash[:error] = "Something went wrong"
+      render 'edit'
+    end
   end
 
   def destroy
@@ -56,7 +57,6 @@ class ActivitiesController < ApplicationController
       redirect_to bucket_activities_path
     end
   end
-
 
   private
 
