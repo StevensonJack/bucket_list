@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_142120) do
     t.string "origin"
     t.string "destination"
     t.string "flight_carrier"
+    t.string "skyscanner_link"
     t.index ["activity_id"], name: "index_offers_on_activity_id"
   end
 
