@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_205941) do
+ActiveRecord::Schema.define(version: 2020_12_05_133321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_205941) do
     t.string "origin"
     t.string "destination"
     t.string "flight_carrier"
+    t.string "skyscanner_link"
     t.index ["activity_id"], name: "index_offers_on_activity_id"
   end
 
