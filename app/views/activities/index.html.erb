@@ -42,7 +42,7 @@
       <p class="blue-button large-button new-activity">New activity</p>
     <% end %>
   </div>
-</div> 
+</div>
 
 <%# --- Bucket body %>
 <div class="container-fluid no-padding activity">
@@ -71,3 +71,10 @@
     <% end %>
   </div>
 </div>
+
+<div class="map" id="map"
+     style="width: 65%; height: 400px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+

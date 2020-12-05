@@ -4,6 +4,12 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = @bucket.activities.order(rating: :asc) 
+    @markers = @activities.map do |activity|
+      {
+        lat: activity.latitude,
+        lng: activity.longitude
+      }
+    end
   end
 
   def new

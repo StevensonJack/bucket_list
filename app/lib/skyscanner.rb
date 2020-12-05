@@ -25,6 +25,15 @@ class Skyscanner
     gather_quote_data(JSON.parse(response.read_body))
   end
 
+  def generate_url
+    url_origin = @originplace.gsub("-sky", "").downcase
+    url_destination = @destinationplace.gsub("-sky", "").downcase
+    out_date = Date.parse(@outboundpartialdate).strftime("%Y%m%d")
+    in_date = Date.parse(@inboundpartialdate).strftime("%Y%m%d")
+
+    "https://www.skyscanner.net/transport/flights/#{url_origin}/#{url_destination}/#{in_date}/#{out_date}/"
+  end
+
   private
 
   def get_place_id(location)

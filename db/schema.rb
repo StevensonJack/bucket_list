@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_26_195917) do
+ActiveRecord::Schema.define(version: 2020_12_05_142120) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +48,8 @@ ActiveRecord::Schema.define(version: 2020_11_26_195917) do
     t.datetime "updated_at", precision: 6, null: false
     t.text "photo"
     t.float "rating"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["bucket_id"], name: "index_activities_on_bucket_id"
   end
 
@@ -70,6 +73,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_195917) do
     t.string "origin"
     t.string "destination"
     t.string "flight_carrier"
+    t.string "skyscanner_link"
     t.index ["activity_id"], name: "index_offers_on_activity_id"
   end
 
@@ -84,6 +88,7 @@ ActiveRecord::Schema.define(version: 2020_11_26_195917) do
     t.string "name"
     t.string "location"
     t.date "birthday"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
