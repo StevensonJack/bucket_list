@@ -4,6 +4,8 @@
 
 .column-text {
   text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .column-images {
@@ -83,3 +85,9 @@
   opacity: 1;
 }
 
+.username-hello {
+  color: $blue;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+}
