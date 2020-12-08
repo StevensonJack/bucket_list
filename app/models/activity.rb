@@ -9,6 +9,8 @@ class Activity < ApplicationRecord
   # after_update :skyscanner_api
   after_create :skyscanner_job
   after_update :skyscanner_job
+  before_save :activity_rating
+
 
   private
 
@@ -33,5 +35,12 @@ class Activity < ApplicationRecord
 
   def skyscanner_job
     SkyscannerJob.perform_now(self)
+  end
+
+  def activity_rating
+    # Calculate the activity rating
+    best_offer = self.offers.order(price: :asc).first
+    rating = best_offer.price / self.budget
+    self.rating = rating
   end
 end
