@@ -63,7 +63,7 @@
               <% if activity.offers.blank? %>
                 <p class="activity-offer-price no-offer">No offers</p>
               <% else %>
-                <p class="activity-offer-price <% activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
+                <p class="activity-offer-price <%= activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
               <% end %>
           </div>
         <% end %>
