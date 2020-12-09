@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
-  max-width: 1200px;
+  max-width: 1000px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -28,7 +28,7 @@
 .activity-header {
   background-size: cover;
   background-position: center;
-  padding: 9vh;
+  padding: 14vh 14vh 5vh;
   justify-content: left;
   align-items: center;
 }
@@ -40,20 +40,31 @@
 }
 
 .activity-title h1 {
+  margin-top: 3vh;
   margin-right: 5px;
+  font-size: 4rem;
+}
+
+//ACTIVITY CARDS
+.activities-box {
+  margin-top: 5vh;
 }
 
 // *** LINKS ***
-.center-activity-links {
-  padding: 0 8vh;
-}
-
 .activity-links {
-  padding: 8vh 0;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 10vh;
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  max-width: 1000px;
+}
+
+.activity-links a {
+  margin-right: 1vh;
 }
 
 // DELETE
@@ -71,50 +82,28 @@
   background-color: $red;
 }
 
-//BACK
-.activity-back {
-  // position: absolute;
-  // top: 50%;
-  // left: calc(8vh + 44px);
-  // transform: translate(-50%, -50%);
-  margin-top: auto;
-  margin-bottom: auto;
-}
+// RESPONSIVE
 
 @media (max-width: 767px) {
-  .activity-back {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-50%, -50%);
-    background-color: white;
+  .activity-header{
+    padding: 10vh 5vh 3vh;
+  }
+
+  .activity-links {
+    justify-content: center;
+  }
+
+  .activity-links a {
+    margin-bottom: 1vh;
   }
 }
 
-// NEW
-.new-activity {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
+//FORMs
 #bucket_title {
   padding: 6px;
   border-radius: 5px;
   margin-right: 3px;
   border: 1px solid grey;
-}
-
-// UPLOAD PHOTO
-.upload-bucket-photo {
-  display: flex;
-  align-items: center;
-  justify-content: right;
-}
-
-.upload-bucket-photo .circle-button {
-  margin-right: 8px;
 }
 
 #bucket_photo {
