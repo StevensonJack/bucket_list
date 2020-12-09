@@ -15,6 +15,7 @@
   background: $blue;
   border-radius: 20px;
   color: $white;
+  flex: 2;
 }
 
 .activity-details {
@@ -39,10 +40,10 @@
 }
 
 .offer-book-button {
-  // position: absolute;
   border-radius: 10px;
-  // left: 35vh;
-  // bottom: 5%;
-  // right: 40%;
-  // transform: translate(-50%, -50%);
+  margin-top: 0;
+}
+
+.offer-container {
+  padding: 75px;
 }

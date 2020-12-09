@@ -52,20 +52,20 @@
   </div>
 <% else %>
 <%# --- Bucket body %>
-  <div class="container-fluid no-padding activity">
-    <div id="activity-cards" class="row d-flex justify-content-center">
-      <%@activities.each do |activity| %>
-        <div class="activity-perimetre col-sm-12 col-md-10 col-lg-8">
-          <%= link_to bucket_activity_path(@bucket, activity) do %>
-            <div class="card-activity">
-              <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= activity.photo %>');"></div>
-              <div class="card-activity-infos">
-                <h2><%= activity.title %> change</h2>
-                <div class="d-flex align-middle card-activity-description">
-                  <p><i class="fas fa-plane"></i> to <%= activity.location %></p>
-                  <p><i class="fas fa-user"></i> <%= activity.people_number %></p>
-                  <p><i class="fas fa-money-bill"></i> <%= activity.budget %>€</p>
-                </div>
+
+<div class="container-fluid no-padding activity">
+  <div id="activity-cards" class="row d-flex justify-content-center">
+    <%@activities.each do |activity| %>
+      <div class="activity-perimetre col-sm-12 col-md-10 col-lg-8">
+        <%= link_to bucket_activity_path(@bucket, activity) do %>
+          <div class="card-activity">
+            <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= activity.photo %>');"></div>
+            <div class="card-activity-infos">
+              <h2><%= activity.title %></h2>
+              <div class="d-flex align-middle card-activity-description">
+                <p><i class="fas fa-plane"></i> to <%= activity.location %></p>
+                <p><i class="fas fa-user"></i> <%= activity.people_number %></p>
+                <p><i class="fas fa-money-bill"></i> <%= activity.budget %>€</p>
               </div>
                 <% if activity.offers.blank? %>
                   <p class="activity-offer-price no-offer">No offers</p>
@@ -73,10 +73,16 @@
                   <p class="activity-offer-price <% activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
                 <% end %>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+
+              <% if activity.offers.blank? %>
+                <p class="activity-offer-price no-offer">No offers</p>
+              <% else %>
+                <p class="activity-offer-price <%= activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
+              <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="map" id="map"
      style="width: 65%; height: 400px;"

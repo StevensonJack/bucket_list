@@ -30,23 +30,95 @@
       </div>
     </div>
   </div>
-</div>
-<div class="container">
-  <div class="col-md-12 column-text">
-    <h3 class="title2">What are the top 10 bucket list items?</h3>
-    <div>
-      <div class="show-item">Items that are closer to your budget will appear at the top, and, if they meet the budget will appear with a highlight.</div>
-      <div class="activity-card top-item">Fall in love - 83%</div>
+  <div class="row mt-5">
+    <div class="col-sm-12 col-md-12 col-lg-10 column-text center-home-page-content">
+      <h2 class="title2">What are the top 10 bucket list items?</h2>
+      <p>Items that are closer to your budget will appear at the top, and, if they meet the budget will appear with a highlight.</p>
     </div>
-    <div class="activity-card">Go on a wine tour in Napa - 53%</div>
-    <div class="activity-card">Change someone's life for the better - 52%</div>
-    <div class="activity-card">Get to my ideal weight - 47%</div>
-    <div class="activity-card">Go on a safari - 45%</div>
-    <div class="activity-card">Ride a hot air balloon - 45%</div>
-    <div class="activity-card">See the Northern Lights - 45%</div>
-    <div class="activity-card">Go to the Super Bowl - 43%</div>
-    <div class="activity-card">Swim with dolphins - 39%</div>
-    <div class="activity-card">Travel through Europe - 38%</div>
-    <%= link_to "Create My Bucket List", buckets_path, class: "create_bucket white-button" %>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "love.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Fall in love</h2>
+        </div>
+        <p class="activity-offer-price green">83%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "wine.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Go on a wine tour in Napa</h2>
+        </div>
+        <p class="activity-offer-price orange">53%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "health.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Get to my ideal weight</h2>
+        </div>
+        <p class="activity-offer-price orange">51%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "safari.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Go on a safari</h2>
+        </div>
+        <p class="activity-offer-price red">45%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "balloon.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Ride a hot air balloon</h2>
+        </div>
+        <p class="activity-offer-price red">45%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "NorthernLights.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>See the Northern Lights</h2>
+        </div>
+        <p class="activity-offer-price red">45%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "superbowl.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Go to the Super Bowl</h2>
+        </div>
+        <p class="activity-offer-price red">43%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "dolphins.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Swim with dolphins</h2>
+        </div>
+        <p class="activity-offer-price red">39%</p>
+      </div>
+    </div>
+    <div class="activity-perimetre col-sm-12 col-md-12 col-lg-10 center-home-page-content">
+      <div class="card-activity">
+        <div class="activity-image" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(<%= asset_path "paris.jpg" %>);"></div>
+        <div class="card-activity-infos">
+          <h2>Travel through Europe</h2>
+        </div>
+        <p class="activity-offer-price red">38%</p>
+      </div>
+    </div>
+    <div class="center-home-page-content mt-4">
+      <%= link_to "Create My Bucket List", buckets_path, class: "create_bucket white-button" %>
+    </div>
   </div>
 </div>
+
