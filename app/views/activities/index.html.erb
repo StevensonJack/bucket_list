@@ -43,8 +43,16 @@
     <% end %>
   </div>
 </div>
-
+<% if @activities.empty? %>
+  <div class="row">
+    <div class="col-8 empty-activities">
+      <%= image_tag "peace.png", class: "empty-activities-image" %>
+      <h2 class="empty-text">Add your first activity!</h2>
+    </div>
+  </div>
+<% else %>
 <%# --- Bucket body %>
+
 <div class="container-fluid no-padding activity">
   <div id="activity-cards" class="row d-flex justify-content-center">
     <%@activities.each do |activity| %>
@@ -59,7 +67,13 @@
                 <p><i class="fas fa-user"></i> <%= activity.people_number %></p>
                 <p><i class="fas fa-money-bill"></i> <%= activity.budget %>€</p>
               </div>
+                <% if activity.offers.blank? %>
+                  <p class="activity-offer-price no-offer">No offers</p>
+                <% else %>
+                  <p class="activity-offer-price <% activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
+                <% end %>
             </div>
+
               <% if activity.offers.blank? %>
                 <p class="activity-offer-price no-offer">No offers</p>
               <% else %>
@@ -70,11 +84,11 @@
       </div>
     <% end %>
   </div>
-</div>
-
-<div class="map" id="map"
+  <div class="map" id="map"
      style="width: 65%; height: 400px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-</div>
+  </div>
+<% end %>
+
 
