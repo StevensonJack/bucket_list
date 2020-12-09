@@ -1,55 +1,54 @@
 <div class="container-fluid">
   <div class="offer-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @activity.photo %>');">
+    <h1 class="title"><strong><%= @activity.title %></strong></h1>
   </div>
 </div>
-<div class="container">
+<div class="container activity-banner">
   <div class="activity-details p-4">
-    <p><strong>Title:</strong> <%= @activity.title %></p>
-    <p><strong>Budget:</strong> <%= @activity.budget %></p>
-    <p><strong>Location:</strong> <%= @activity.location %></p>
-    <p><strong>Time frame:</strong> <%= @activity.time_frame %></p>
-    <p><strong>People number:</strong> <%= @activity.people_number %></p>
-    <p><strong>Category:</strong> <%= @activity.category %></p>
+    <h5><strong>Budget:</strong> <%= @activity.budget %>€</h5>
+    <h5><strong>Location:</strong> <%= @activity.location %></h5>
+    <h5><strong>Time frame:</strong> <%= @activity.time_frame %> days</h5>
+    <h5><strong>People number:</strong> <%= @activity.people_number %></h5>
+    <h5><strong>Category:</strong> <%= @activity.category %></h5>
 
     <%= link_to bucket_activities_path do %>
-      <i class="fas fa-undo-alt"></i> Back</button>
+      <i class="fas fa-undo-alt"></i>Back
     <% end %>
     <%= link_to edit_bucket_activity_path do %>
-      <i class="fas fa-edit"></i> Edit</button>
+      <i class="fas fa-edit"></i>Edit
     <% end %>
     <%= link_to bucket_activity_path(@bucket), method: :delete, data: { confirm: "Are you sure?" } do %>
-      <i class="fas fa-trash-alt"></i> Delete
+      <i class="fas fa-trash-alt"></i>Delete
     <% end %>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
 <div class="offer-container">
-  <div class="row">
+  <div class="row bucket-wrap">
     <% @offers.each_with_index do |offer, index| %>
       <div class="col-sm">
-        <div class="offer-card p-4">
-          <div class="offer-title d-flex">
+        <%= link_to offer.skyscanner_link, target: :_blank, class: "offer-link" do %>
+          <div class="offer-link offer-card p-4">
+            <div class="offer-title d-flex">
+            </div>
+            <div class="offer-destination d-flex justify-content-between">
+              <p class="pr-2"> <%= offer.origin %> </p>
+              <i class="fas fa-arrow-right"></i>
+              <p class="pl-2"> <%= offer.destination %> </p>
+            </div>
+            <div class="offer-carrier">
+              <p> <%= offer.flight_carrier %> </p>
+            </div>
+            <div class="offer-dates d-flex">
+              <p class="pr-1"> <%= offer.start_date %> </p>
+              <p> <%= offer.end_date %> </p>
+            </div>
+            <div class="offer-title d-flex justify-content-between align-content-center">
+              <div class="price-tag">
+                <%= offer.price.to_i %>€
+              </div>
+            </div>
           </div>
-          <div class="offer-destination d-flex justify-content-between">
-            <p class="pr-2"> <%= offer.origin %> </p>
-            <i class="fas fa-arrow-right"></i>
-            <p class="pl-2"> <%= offer.destination %> </p>
-          </div>
-          <div class="offer-carrier">
-            <p> <%= offer.flight_carrier %> </p>
-          </div>
-          <div class="offer-dates d-flex">
-            <p class="pr-1"> <%= offer.start_date %> </p>
-            <p> <%= offer.end_date %> </p>
-          </div>
-          <div class="offer-title d-flex justify-content-between align-content-center">
-            <p><%= link_to "Book Now", offer.skyscanner_link, target: :_blank, class: "white-button" %></p>
-            <h3><%= offer.price.to_i %>€</h3>
-          </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>
