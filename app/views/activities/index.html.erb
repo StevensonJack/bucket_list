@@ -67,11 +67,6 @@
                 <p><i class="fas fa-user"></i> <%= activity.people_number %></p>
                 <p><i class="fas fa-money-bill"></i> <%= activity.budget %>€</p>
               </div>
-                <% if activity.offers.blank? %>
-                  <p class="activity-offer-price no-offer">No offers</p>
-                <% else %>
-                  <p class="activity-offer-price <% activity_price_color(activity) %>"><%= activity.offers.first.price.to_i %>€</p>
-                <% end %>
             </div>
 
               <% if activity.offers.blank? %>
@@ -90,5 +85,3 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 <% end %>
-
-
