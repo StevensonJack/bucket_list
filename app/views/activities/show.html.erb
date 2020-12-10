@@ -31,17 +31,13 @@
             <div class="offer-title d-flex">
             </div>
             <div class="offer-destination d-flex justify-content-between">
-              <p class="pr-2"> <%= offer.origin %> </p>
-              <i class="fas fa-arrow-right"></i>
-              <p class="pl-2"> <%= offer.destination %> </p>
+              <p class="pr-2"><%= offer.origin %>  <i class="fas fa-arrow-right"></i>  <%= offer.destination %></p>
             </div>
             <div class="offer-carrier">
-              <p> <%= offer.flight_carrier %> </p>
+              <p>Airline: <%= offer.flight_carrier %> </p>
             </div>
-            <div class="offer-dates d-flex">
-              <p class="pr-1"> <%= offer.start_date %> </p>
-              <p> <%= offer.end_date %> </p>
-            </div>
+              <p class="pr-1">Departure: <%= offer.start_date %></p>
+              <p>Return: <%= offer.end_date %> </p>
             <div class="offer-title d-flex justify-content-between align-content-center">
               <div class="price-tag">
                 <%= offer.price.to_i %>€
