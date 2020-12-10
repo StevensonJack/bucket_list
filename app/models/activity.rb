@@ -39,8 +39,10 @@ class Activity < ApplicationRecord
 
   def activity_rating
     # Calculate the activity rating
-    best_offer = self.offers.order(price: :asc).first
-    rating = best_offer.price / self.budget
-    self.rating = rating
+    unless self.offers.blank?
+      best_offer = self.offers.order(price: :asc).first
+      rating = best_offer.price / self.budget
+      self.rating = rating
+    end
   end
 end
