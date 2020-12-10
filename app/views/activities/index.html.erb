@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="activity-header" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @bucket.photo %>');">
+  <div class="activity-header" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('<%= @bucket.photo %>');">
     <div class="max-header-width">
       <%# --- Bucket title --- %>
       <div class="activity-title">
@@ -21,6 +21,14 @@
         <% end %>
       </div>
 
+    </div>
+    <div class="activity-links">
+      <%= link_to buckets_path do %>
+        <p class="empty-button activity-back"><i class="fas fa-undo-alt"></i> Back</p>
+      <% end %>
+      <%= link_to new_bucket_activity_path do %>
+        <p class="blue-button large-button new-activity">New activity</p>
+      <% end %>
       <div class="upload-bucket-photo">
         <div id="upload-photo-form" style="display: none;">
           <%= simple_form_for @bucket, html: { class: 'form-inline' } do |f| %>
@@ -33,27 +41,19 @@
     </div>
   </div>
 </div>
-<div class="center-activity-links">
-  <div class="activity-links">
-    <%= link_to buckets_path do %>
-      <p class="empty-button activity-back"><i class="fas fa-undo-alt"></i> Back</p>
-    <% end %>
-    <%= link_to new_bucket_activity_path do %>
-      <p class="blue-button large-button new-activity">New activity</p>
-    <% end %>
-  </div>
-</div>
+
+<%# --- Empty buckets %>
 <% if @activities.empty? %>
-  <div class="row">
+  <div class="row mt-10">
     <div class="col-8 empty-activities">
       <%= image_tag "peace.png", class: "empty-activities-image" %>
       <h2 class="empty-text">Add your first activity!</h2>
     </div>
   </div>
-<% else %>
-<%# --- Bucket body %>
 
-<div class="container-fluid no-padding activity">
+<%# --- Bucket body %>
+<% else %>
+<div class="container-fluid no-padding activities-box">
   <div id="activity-cards" class="row d-flex justify-content-center">
     <%@activities.each do |activity| %>
       <div class="activity-perimetre col-sm-12 col-md-10 col-lg-8">
@@ -84,4 +84,5 @@
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
+</div>
 <% end %>
