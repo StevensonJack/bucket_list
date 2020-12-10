@@ -16,6 +16,7 @@
   margin: 0;
 }
 
+// HEADER
 .max-header-width {
   display: flex;
   justify-content: space-between;
@@ -43,6 +44,15 @@
   margin-top: 3vh;
   margin-right: 5px;
   font-size: 4rem;
+}
+
+// EDIT
+.edit-bucket {
+  opacity: 0;
+}
+
+#show-form:hover .edit-bucket{
+  opacity: 1;
 }
 
 //ACTIVITY CARDS
