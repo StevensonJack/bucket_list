@@ -9,11 +9,13 @@
 
 .offer-card {
   position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
   background: $blue;
   border-radius: 10px;
   color: $white;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
-  height: 300px;
+  height: 280px;
 }
 
 .activity-details {
@@ -32,6 +34,8 @@
 
 .activity-banner {
   position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .title {
@@ -60,10 +64,11 @@
 }
 
 .price-tag {
- background-image: image-url('tag.png');
- background-size: cover;
- background-repeat: no-repeat;
- height: 80px;
- width: 80px;
- position: absolute;
+  text-align: right;
+//  background-image: image-url('tag.png');
+//  background-size: cover;
+//  background-repeat: no-repeat;
+//  height: 80px;
+//  width: 80px;
+//  position: absolute;
 }
